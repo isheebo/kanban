@@ -132,3 +132,19 @@ class ToDo:
                        "Started on", "Finished on", "Duration"]
             return tabulate.tabulate(results, headers, tablefmt="fancy_grid")
         return "No tasks are being worked on currently!"
+
+    def edit_task(self, task_id):
+        self.cursor.execute(
+            f"SELECT Name, Description FROM Task WHERE ID={task_id}")
+        results = self.cursor.fetchone()
+        if results:
+            new_name = input("Enter task name: ")
+            new_description = input("Task Description: ")
+            if new_description and new_name:
+                self.cursor.execute(
+                    "UPDATE Task SET Name = '{}', Description = \"{}\" WHERE ID = {}".format(new_name, new_description,
+                                                                                             task_id))
+                self.db.commit()
+                return "Task has been edited successfully!!"
+            return "both name and description required: please enter both"
+        return "Task not found!"

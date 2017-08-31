@@ -19,3 +19,17 @@ def connect(filename):
                        "Duration DATETIME);"
                        )
     return db
+
+
+class ToDo:
+    """ ToDo """
+
+    def __init__(self):
+        self.db = connect("kanban.db")
+        self.cursor = self.db.cursor()
+
+    def todo(self, task_name, task_description):
+        self.cursor.execute("INSERT INTO Task(Name, Description, Status)VALUES(?,?,?)",
+                            (task_name, task_description, "ToDo"))
+        self.db.commit()
+        return f"A task with name '{task_name.title()}' has been created successfully!"

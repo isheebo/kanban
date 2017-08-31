@@ -55,6 +55,7 @@ def docopt_cmd(func):
 
 
 class Main(cmd.Cmd):
+    # this assumes a Windows systems... for *nix OS's, use os.system('clear')
     os.system("cls")
     prompt = "The Kanbanna>>>"
 

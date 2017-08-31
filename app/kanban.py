@@ -120,3 +120,15 @@ class ToDo:
             headers = ["ID", "Name", "Description", "Start Time"]
             return tabulate.tabulate(results, headers, tablefmt="fancy_grid")
         return "No tasks are being worked on currently!"
+
+    def list_done(self):
+        self.cursor.execute(
+            "SELECT ID, Name, Description, Start, Finish, Duration FROM Task WHERE Status='Done'")
+        results = self.cursor.fetchall()
+        if results:
+            # add a duration column.. for the time spent doing a particular
+            # task
+            headers = ["ID", "Name", "Description",
+                       "Started on", "Finished on", "Duration"]
+            return tabulate.tabulate(results, headers, tablefmt="fancy_grid")
+        return "No tasks are being worked on currently!"

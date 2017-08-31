@@ -80,3 +80,44 @@ class Main(cmd.Cmd):
         """usage: done <task_id>"""
         task_id = args["<task_id>"]
         print(self.kanban.done(task_id))
+
+    @docopt_cmd
+    def do_list_all(self, _):
+        """usage: list_all"""
+        print(self.kanban.list_all())
+
+    @docopt_cmd
+    def do_list_todo(self, _):
+        """usage: list_todo"""
+        print(self.kanban.list_todo())
+
+    @docopt_cmd
+    def do_list_doing(self, _):
+        """usage: list_doing"""
+        print(self.kanban.list_doing())
+
+    @docopt_cmd
+    def do_list_done(self, _):
+        """usage: list_done"""
+        print(self.kanban.list_done())
+
+    @docopt_cmd
+    def do_edit_task(self, args):
+        """usage: edit_task <task_id>"""
+        task_id = args["<task_id>"]
+        print(self.kanban.edit_task(task_id))
+
+    @docopt_cmd
+    def do_delete_task(self, args):
+        """usage: delete_task <task_id>"""
+        task_id = args["<task_id>"]
+        print(self.kanban.delete_task(task_id))
+
+    @docopt_cmd
+    def do_quit(self, _):
+        """quit: exits the application"""
+        print('See ya soon!')
+        exit(0)
+
+
+Main().cmdloop()

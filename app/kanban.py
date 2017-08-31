@@ -148,3 +148,12 @@ class ToDo:
                 return "Task has been edited successfully!!"
             return "both name and description required: please enter both"
         return "Task not found!"
+
+    def delete_task(self, task_id):
+        self.cursor.execute(f"SELECT Name FROM Task WHERE ID = {task_id}")
+        result = self.cursor.fetchone()
+        if result:
+            self.cursor.execute(f"DELETE FROM Task WHERE ID = {task_id}")
+            self.db.commit()
+            return f"Task with Name '{result[0]}' and ID '{task_id}' has been deleted successfully!"
+        return "Task not found!"

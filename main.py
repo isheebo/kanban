@@ -62,9 +62,15 @@ class Main(cmd.Cmd):
         super().__init__()
         self.kanban = ToDo()
 
-     @docopt_cmd
+    @docopt_cmd
     def do_todo(self, args):
         """usage: todo <task_name>"""
         task_name = args["<task_name>"]
         description = input("Enter description: ")
         print(self.kanban.todo(task_name, description))
+
+    @docopt_cmd
+    def do_doing(self, args):
+        """usage: doing <task_id> """
+        task_id = args["<task_id>"]
+        print(self.kanban.doing(task_id))

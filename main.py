@@ -74,3 +74,9 @@ class Main(cmd.Cmd):
         """usage: doing <task_id> """
         task_id = args["<task_id>"]
         print(self.kanban.doing(task_id))
+
+    @docopt_cmd
+    def do_done(self, args):
+        """usage: done <task_id>"""
+        task_id = args["<task_id>"]
+        print(self.kanban.done(task_id))

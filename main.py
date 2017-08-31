@@ -18,7 +18,7 @@ Options:
 import cmd
 import os
 from docopt import DocoptExit, docopt
-from todo.todo import ToDo
+from app.kanban import ToDo
 
 
 def docopt_cmd(func):
@@ -52,3 +52,12 @@ def docopt_cmd(func):
     fn.__doc__ = func.__doc__
     fn.__dict__.update(func.__dict__)
     return fn
+
+
+class Main(cmd.Cmd):
+    os.system("cls")
+    prompt = "The Kanbanna>>>"
+
+    def __init__(self):
+        super().__init__()
+        self.kanban = ToDo()

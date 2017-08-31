@@ -114,11 +114,10 @@ class Main(cmd.Cmd):
         task_id = args["<task_id>"]
         print(self.kanban.delete_task(task_id))
 
-    @docopt_cmd
     def do_quit(self, _):
-        """quit: exits the application"""
+        """usage: exits the application"""
         print('See ya soon!')
-        exit(0)
+        exit()
 
 
 Main().cmdloop()

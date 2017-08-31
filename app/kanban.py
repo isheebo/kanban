@@ -94,3 +94,11 @@ class ToDo:
                 return "Task has already been completed"
             return "The task specified is still on the todo list: try changing it's status first"
         return "unknown task ID: try listing the tasks first so as to select the appropriate ID"
+
+    def list_all(self):
+        self.cursor.execute("SELECT ID, Name, Description, Status FROM Task")
+        results = self.cursor.fetchall()
+        if results:
+            headers = ["ID", "Name", "Description", "Status"]
+            return tabulate.tabulate(results, headers, tablefmt="fancy_grid")
+        return "No tasks added yet! please add some tasks and try again"

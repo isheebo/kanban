@@ -61,3 +61,10 @@ class Main(cmd.Cmd):
     def __init__(self):
         super().__init__()
         self.kanban = ToDo()
+
+     @docopt_cmd
+    def do_todo(self, args):
+        """usage: todo <task_name>"""
+        task_name = args["<task_name>"]
+        description = input("Enter description: ")
+        print(self.kanban.todo(task_name, description))

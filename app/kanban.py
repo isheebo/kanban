@@ -102,3 +102,12 @@ class ToDo:
             headers = ["ID", "Name", "Description", "Status"]
             return tabulate.tabulate(results, headers, tablefmt="fancy_grid")
         return "No tasks added yet! please add some tasks and try again"
+
+    def list_todo(self):
+        self.cursor.execute(
+            "SELECT ID, Name, Description FROM Task WHERE Status='ToDo'")
+        results = self.cursor.fetchall()
+        if results:
+            headers = ["ID", "Name", "Description"]
+            return tabulate.tabulate(results, headers, tablefmt="fancy_grid")
+        return "You currently have no pending (to do) tasks"

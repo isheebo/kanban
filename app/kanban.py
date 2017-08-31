@@ -111,3 +111,12 @@ class ToDo:
             headers = ["ID", "Name", "Description"]
             return tabulate.tabulate(results, headers, tablefmt="fancy_grid")
         return "You currently have no pending (to do) tasks"
+
+    def list_doing(self):
+        self.cursor.execute(
+            "SELECT ID, Name, Description, Start FROM Task WHERE Status='Doing'")
+        results = self.cursor.fetchall()
+        if results:
+            headers = ["ID", "Name", "Description", "Start Time"]
+            return tabulate.tabulate(results, headers, tablefmt="fancy_grid")
+        return "No tasks are being worked on currently!"

@@ -1,10 +1,10 @@
 # Kanban App
 This application implements the basic functionality of a ToDo list application. 
 
-ToDo lists are created. Tasks can then be shuffled from todo, to doing and then to done.
+Add the tasks to be done using the todo command. Tasks can then be shuffled from todo, to doing and then to done.
 
 ## Using
-It is assumed that you have [Python 3.6](https://www.python.org) installed. Grab this sourcecode by 
+It is assumed that you have [Python 3.6](https://www.python.org) & [git](https://git-scm.com) installed. Grab this sourcecode and run this app by 
 ```sh 
 $ git clone https://github.com/isheebo/kanban.git
 $ cd kanban

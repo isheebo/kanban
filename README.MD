@@ -29,4 +29,4 @@ On running the application, type `help` for the list of valid commands. For help
 
 
 ## Author
-Kanyesigye Edgar
+[**Kanyesigye Edgar**](https://gitter.im/isheebo)

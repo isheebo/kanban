@@ -17,6 +17,7 @@ Options:
 
 import cmd
 import os
+import platform
 from docopt import DocoptExit, docopt
 from app.kanban import ToDo
 
@@ -56,7 +57,8 @@ def docopt_cmd(func):
 
 class Main(cmd.Cmd):
     # this assumes a Windows systems... for *nix OS's, use os.system('clear')
-    os.system("cls")
+    os.system("cls") if platform.platform(
+    ).title() == 'Windows' else os.system('clear')
     prompt = "The Kanbanna>>>"
 
     def __init__(self):
